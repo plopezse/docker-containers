@@ -6,7 +6,7 @@
 # Based on Fedora
 ############################################################
 
-# Set the base image to Ubuntu
+# Set the base image to Fedora
 FROM fedora
 
 # File Author / Maintainer

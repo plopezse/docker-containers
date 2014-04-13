@@ -1,10 +1,10 @@
 #!/bin/sh
 
 #
-# Create virtual machines
+# Create container
 #
 
-# Start Apache web server virtual machine
+# Start Apache web server container
 echo "Creating httpd container ..."
 docker build --rm -q -t plopezse/eap-httpd ./docker/http
 

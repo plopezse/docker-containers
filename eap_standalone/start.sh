@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Start JBoss EAP virtual machine
+# Start JBoss EAP container
 echo "Starting EAP domain controller ..."
 image_eap=$(docker run -d plopezse/eap-standalone)
 ip_eap=$(docker inspect $image_eap | grep IPAddress | awk '{print $2}' | tr -d '",')

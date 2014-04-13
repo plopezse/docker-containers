@@ -4,12 +4,12 @@
 # Start services
 #
 
-# Start Apache web server virtual machine
+# Start Apache web server container
 echo "Starting httpd server ..."
 image_httpd=$(docker run -d plopezse/eap-httpd)
 ip_httpd=$(docker inspect $image_httpd | grep IPAddress | awk '{print $2}' | tr -d '",')
 
-# Start JBoss EAP virtual machine
+# Start JBoss EAP containers
 
 # Domain Controller
 echo "Starting EAP domain controller ..."
