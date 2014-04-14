@@ -1,4 +1,4 @@
-JBoss EAP Docker container
+JBoss BPMS Docker container
 ==========================
 
 Dockerfile & scripts to build an JBoss BPMS container
