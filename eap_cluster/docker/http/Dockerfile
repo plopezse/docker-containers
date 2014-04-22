@@ -11,14 +11,17 @@ FROM fedora
 # File Author / Maintainer
 MAINTAINER "Pedro Lopez" "plopezse@redhat.com"
 
+# Update the repository sources list
+#RUN yum update -y; yum clean all
+
 ####### BASE SOFTWARE ############
-#RUN yum install -y net-tools
+#RUN yum install -y net-tools; yum clean all
 
 ####### HTTPD ####################
-RUN yum install -y httpd
+RUN yum install -y httpd; yum clean all
 
 ####### MOD_CLUSTER ##############
-RUN yum install -y mod_cluster
+RUN yum install -y mod_cluster; yum clean all
 RUN sed -i -e 's/LoadModule proxy_balancer_module/#LoadModule proxy_balancer_module/g' /etc/httpd/conf.modules.d/00-proxy.conf
 
 RUN sed -i '1,4d' /etc/httpd/conf.d/mod_cluster.conf

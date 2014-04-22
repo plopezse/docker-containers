@@ -13,8 +13,11 @@ This container creates 3 users:
     jbossadmin / admin123! --> BPMS administrator (roles: admin, developer, analyst, user, manager)
     jbossuser / user123! --> BPMS user (roles: user, appraiser, broker, manager)
 
-Install / create containers:
+Install / create container:
 ./install.sh
 
-Start all containers:
+Start container:
 ./start.sh
+
+Stop container:
+./stop.sh

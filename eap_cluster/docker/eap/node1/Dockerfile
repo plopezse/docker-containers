@@ -11,12 +11,12 @@ FROM fedora
 MAINTAINER "Pedro Lopez" "plopezse@redhat.com"
 
 # Update the repository sources list
-#RUN yum update -y
+#RUN yum update -y; yum clean all
 
 ####### BASE SOFTWARE ############
-RUN yum install -y net-tools
-RUN yum install -y java-1.7.0-openjdk
-RUN yum install -y unzip
+RUN yum install -y net-tools; yum clean all
+RUN yum install -y java-1.7.0-openjdk; yum clean all
+RUN yum install -y unzip; yum clean all
 
 ####### EAP ######################
 ADD jboss-eap-6.2.0.zip /tmp/

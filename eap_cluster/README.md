@@ -17,3 +17,6 @@ Install / create containers:
 
 Start all containers:
 ./start.sh
+
+Stop all containers:
+./stop.sh

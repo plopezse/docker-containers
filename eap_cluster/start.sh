@@ -1,5 +1,14 @@
 #!/bin/sh
 
+# Check if container is already started
+if [ -f docker.pid ]; then
+    echo "Container is already started"
+    container_id=$(cat docker.pid)
+    echo "Stoping container $container_id..."
+    docker stop $container_id
+    rm -f docker.pid
+fi
+
 #
 # Start services
 #
@@ -25,6 +34,8 @@ ip_eap1=$(docker inspect $image_eap1 | grep IPAddress | awk '{print $2}' | tr -d
 echo "Starting EAP Host 2 ..."
 image_eap2=$(docker run -d -e "APACHE_IP=$ip_httpd" -e "DC_IP=$ip_eap_dc" plopezse/eap-node-2)
 ip_eap2=$(docker inspect $image_eap2 | grep IPAddress | awk '{print $2}' | tr -d '",')
+
+echo "$image_httpd $image_eap_dc $image_eap1 $image_eap2" > docker.pid
 
 # End
 echo "Installation finished"

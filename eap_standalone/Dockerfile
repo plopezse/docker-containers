@@ -16,12 +16,12 @@ MAINTAINER "Pedro Lopez" "plopezse@redhat.com"
 #RUN yum update -y
 
 ####### BASE SOFTWARE ############
-RUN yum install -y net-tools
-RUN yum install -y java-1.7.0-openjdk
-RUN yum install -y unzip
+RUN yum install -y net-tools; yum clean all
+RUN yum install -y java-1.7.0-openjdk; yum clean all
+RUN yum install -y unzip; yum clean all
 
 ####### HTTPD ####################
-RUN yum install -y httpd
+RUN yum install -y httpd; yum clean all
 
 ####### EAP ######################
 ADD installs/jboss-eap-6.2.0.zip /tmp/
@@ -30,7 +30,7 @@ RUN unzip /tmp/jboss-eap-6.2.0.zip
 RUN /opt/jboss-eap-6.2/bin/add-user.sh admin admin123! --silent
 
 ####### MOD_CLUSTER ##############
-RUN yum install -y mod_cluster
+RUN yum install -y mod_cluster; yum clean all
 RUN sed -i -e 's/LoadModule proxy_balancer_module/#LoadModule proxy_balancer_module/g' /etc/httpd/conf.modules.d/00-proxy.conf
 
 RUN sed -i '1,4d' /etc/httpd/conf.d/mod_cluster.conf

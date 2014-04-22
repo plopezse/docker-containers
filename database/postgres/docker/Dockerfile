@@ -1,4 +1,4 @@
-# Set the base image to Ubuntu
+# Set the base image to Fedora
 FROM fedora
 
 # File Author / Maintainer
@@ -8,7 +8,7 @@ MAINTAINER "Pedro Lopez" "plopezse@redhat.com"
 #RUN yum update -y; yum clean all
 
 ####### INSTALL PostgreSQL ############
-RUN yum -y install postgresql-server postgresql postgresql-contrib supervisor; yum clean all
+RUN yum -y install postgresql-server postgresql postgresql-contrib supervisor net-tools; yum clean all
 
 ####### Configure PostgreSQL ############
 ADD ./postgresql-setup /usr/bin/postgresql-setup
@@ -28,8 +28,7 @@ RUN /postgres_user.sh
 EXPOSE 5432
 
 ####### START SERVICES ###########
-ADD ./start_postgres.sh /start_postgres.sh
-RUN chmod +x /start_postgres.sh
+ADD ./docker_init.sh /docker_init.sh
+RUN chmod +x /docker_init.sh
 
-CMD ["/bin/bash", "/start_postgres.sh"]
-
+CMD ["/bin/bash", "/docker_init.sh"]
