@@ -11,12 +11,12 @@ fi
 
 # Start Jboss ON server container
 echo -e "\nStarting JON container ..."
-container_id=$(docker run -d jboss-on)
+container_id=$(docker run -h jboss-on-container -d jboss-on)
 ip_container=$(docker inspect $container_id | grep IPAddress | awk '{print $2}' | tr -d '",')
-echo $ip_container > docker.pid
+echo $container_id > docker.pid
 
 # End
 echo ""
 echo -e "JON container $container_id started in $ip_container"
-echo -e "Go to $ip_container:$host_port in your browser\n"
+echo -e "Go to $ip_container:7080 in your browser\n"
 

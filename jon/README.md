@@ -1,4 +1,4 @@
-JON container
+JON container (WIP)
 =================
 
 Dockerfile & scripts to run a container with JBoss ON + postgresql + JON plugins
@@ -15,6 +15,6 @@ $ ./build.sh
 
 Run a new container based on the jon-test image
 ```
-$ ./build.sh
+$ ./run.sh
 ```
 
